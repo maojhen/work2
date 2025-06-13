@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工讀生新手村</title>
+  <style>
+
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    nav {
+      background-color: #fff3cd;
+      padding: 5px 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      margin: 5px 10px;
+      text-decoration: none;
+      color: #b85c38;
+      font-weight: bold;
+    }
+
+    h2 {
+      background-color: #ffe8a1;
+      padding: 10px;
+      border-left: 6px solid #f6b73c;
+      margin-top: 30px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #fffef6;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      font-family: "Noto Sans TC", sans-serif;
+      font-size: 16px;
+      margin: 10px 0 20px 0;
+    }
+
+    ol {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    label {
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #f6b73c;
+      border: none;
+      padding: 10px 20px;
+      color: #333;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e0a723;
+    }
+
+    #quizResult {
+      font-weight: bold;
+      margin-top: 15px;
+      color: #b85c38;
+    }
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 245, 204, 0.95); /* 柔和黃色透明背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.overlay-content {
+  background: #fffef6;
+  border: 2px solid #f6b73c;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 90%;
+}
+
+.overlay-content h2 {
+  margin-top: 0;
+  color: #b85c38;
+}
+
+.overlay-content button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-size: 18px;
+  background-color: #f6b73c;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.overlay-content button:hover {
+  background-color: #e59c1a;
+}
+footer{
+    background-color: #e59c1a;
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    text-align: center;
+}
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 16px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h3>工讀生新手村教學手冊</h3>
+    <div class="link">
+        <a href="#schedule">時程表</a>
+    <a href="#check">教室檢查</a>
+    <a href="#form">報名流程</a>
+    <a href="#refund">退費與轉班</a>
+    <a href="#group">團報</a>
+    <a href="#phone">電話開頭用語</a>
+    <a href="#quiz">小練習</a>
+    </div>
+  </nav>
+<div id="overlay">
+  <div  class="overlay-content">
+    <h2>👋 歡迎來到工讀生新手村</h2>
+    <p>請先閱讀以下說明後點選「確認」以進入內容。</p>
+    <ol style="text-align: left;">
+        <li>如果工作久了發現有更快的工作方式，可自行改變流程</li>
+        <li>離開櫃台去其他地方要先告知正值</li>
+        <li>以下內容為個人工作經驗，若與正值交代內容發生衝突，請以正值為主(不然我可能會被約談QAQ)</li>
+        <li>千萬不要拿這個網頁裡的內容頂撞正值，我真的會怕哈哈哈哈</li>
+    </ol>
+    <button onclick="closeOverlay()">確認</button>
+  </div>
+</div>
+  <div class="container">
+    <h2 id="schedule">🕒 時程表</h2>
+    <pre>
+5:30交班 (先算櫃台的錢是否正確)，公式：*臨櫃繳費+{收據、團報單} - *臨櫃退費
+> 整理教室：
+- 1樓櫃台有4個垃圾桶，電梯對面1個
+- 2樓：電梯斜對面4個，213、208、203、202各1個
+- 廁所走廊有1個垃圾桶
+- 廁所要檢查衛生紙與洗手乳
+- 每個垃圾桶底下有垃圾袋，缺少請至B1補充
+- 檢查教室冷氣、桌面、椅子、抽屜、白板
+- 運動教室檢查地板與瑜珈用品
+
+6:10 出發倒垃圾（一定要準時，並向正值報告）
+- 1、5 沒有回收車；2、4、6 有回收車
+- 星期三沒有垃圾車
+
+9:00 結帳（確認金額正確）
+- 公式：*臨櫃繳費+{收據} - *臨櫃退費
+- 將交班報表、日報表、現金、{收據}、{退費單} 裝袋交給正值
+    </pre>
+
+    <h2 id="check">🏫 教室整理與檢查</h2>
+    <pre>
+- 每天下班前要先將新的點名簿放在架上(除了運動課程皆需要放白板筆)
+- 收垃圾、檢查冷氣是否關閉、桌面乾淨、椅子有靠好、抽屜是否有遺留物、白板擦乾淨
+- 窗戶需鎖（213、211、210、203、204、206）
+- 運動教室使用靜電拖把拖地整理瑜珈墊、瑜珈磚
+    </pre>
+
+    <h2 id="form">📝 報名流程</h2>
+    <pre>
+現金繳費：
+1. 輸入身分證字號
+2. 選課程>折扣（依簡章）
+3. 確認報名
+4. 臨櫃繳費>收錢
+5. 列印收據並蓋章
+
+LINE Pay：
+1. 同上流程到確認報名
+2. 學友以 LINE Pay 匯款
+3. 將臨櫃繳費方式改為 LINE Pay，輸入代碼
+4. 臨櫃繳費後列印收據蓋章
+
+轉帳：
+1. 同上流程到確認報名
+2. 列印繳費單等待入帳
+3. 入帳後列印收據蓋章
+    </pre>
+
+    <h2 id="refund">💰 退費與轉班</h2>
+    <pre>
+- 點選「報名異動」，一律選「退費」
+
+退費流程：
+1. 確認原因（如課程未開成）
+2. 系統選擇「100%退全額」
+3. 點選「臨櫃退費」> 列印退費單
+4. 請學友填寫退費資料 > 收回退費單並退還金額
+補充說明： 若非停課，依收據背面規定退費，若有疑問請問正值
+
+轉班流程：
+轉班流程為一退一進，需要先退費再報名
+1. 同上（退費流程）
+2. 幫學友報名新課程 > 折扣可以繼承
+3. 收補差價或退回多餘款項
+    </pre>
+
+    <h2 id="group">👥 團報(不熟悉一定要詢問正值)</h2>
+    <pre>
+紙本處理：
+1. 計算正確金額
+2. 一般學友85折，10人以上班長7折，否則8折
+3. 計算金額公式寫在團報單上
+公式 : 一般學友折扣後的費用 * 人數(不含班代) + 班代費用
+4. 收取對應的現金>複印團報單蓋章將影本交給學友，因為金額龐大請一定要把錢收對喔
+
+💻 系統入帳
+1.確認紙本金額正確
+2.先幫班長報名：
+    ● 選課、折扣、報名 → 臨櫃繳費 → 印刷收據（如需）
+    ● 在紙本團報單班長欄位打勾
+3其他學友報名：
+    ● 入資料→課程代號、折扣代號 → + →確認報名 → 臨櫃繳費 → 印刷收據
+    ● 重複至全部報名完畢
+⚠️只有已繳費的學友才能進入系統
+    </pre>
+
+    <h2 id="phone">📞 電話開頭用語</h2>
+    <pre>
+接電話：救國團你好，敝姓○○，很高興為您服務
+打電話：你好，這裡是新竹救國團
+    </pre>
+
+    <h2 id="quiz">📝 小練習</h2>
+    <form id="quizForm">
+      <ol>
+        <li>
+          5:30交班時，需要先做什麼？
+          <br />
+          <label><input type="radio" name="q1" value="wrong" /> 教室桌椅狀況</label><br />
+          <label><input type="radio" name="q1" value="correct" /> 算錢</label><br />
+          <label><input type="radio" name="q1" value="wrong" /> 電梯垃圾桶數量</label>
+        </li>
+        <li>
+          倒垃圾出發時間是幾點？
+          <br />
+          <label><input type="radio" name="q2" value="correct" /> 6:10</label><br />
+          <label><input type="radio" name="q2" value="wrong" /> 5:30</label><br />
+          <label><input type="radio" name="q2" value="wrong" /> 9:00</label>
+        </li>
+        <li>
+          報名系統中，使用LINE Pay繳費時，需要先讓學友做什麼？
+          <br />
+          <label><input type="radio" name="q3" value="correct" /> 請學友用LINE Pay匯款</label><br />
+          <label><input type="radio" name="q3" value="wrong" /> 現金繳費</label><br />
+          <label><input type="radio" name="q3" value="wrong" /> 直接列印退費單</label><br>
+          <label><input type="radio" name="q3" value="wrong" /> 跟學友加LINE</label>
+        </li>
+        <li>
+          垃圾袋或清潔用品用完了要去哪裡拿
+          <br />
+          <label><input type="radio" name="q4" value="correct" /> B1</label><br />
+          <label><input type="radio" name="q4" value="wrong" /> 當作沒看到</label><br />
+          <label><input type="radio" name="q4" value="wrong" /> 問正值</label><br>
+        </li>
+        <li>
+          星期幾不用倒垃圾
+          <br />
+          <label><input type="radio" name="q5" value="wrong" /> 1</label><br />
+          <label><input type="radio" name="q5" value="correct" /> 3</label><br />
+          <label><input type="radio" name="q5" value="wrong" /> 5</label><br>
+        </li>
+        <li>
+          如何結帳(算錢)
+          <br />
+          <label><input type="radio" name="q6" value="wrong" /> *臨櫃繳費+LINE pay繳費</label><br />
+          <label><input type="radio" name="q6" value="correct" /> *臨櫃繳費+{收據} - *臨櫃退費</label><br />
+          <label><input type="radio" name="q6" value="wrong" /> 請正值過來算</label><br>
+        </li>
+        <li>
+    LINE Pay 繳費時，需要額外做什麼？
+    <br />
+    <label><input type="radio" name="q7" value="wrong" /> 寫團報單</label><br />
+    <label><input type="radio" name="q7" value="wrong" /> 填退費資料</label><br />
+    <label><input type="radio" name="q7" value="correct" /> 輸入代碼</label><br />
+  </li>
+  <li>
+    若非課程未開成，退費應依據哪一項？
+    <br />
+    <label><input type="radio" name="q8" value="wrong" /> 正值個人判斷</label><br />
+    <label><input type="radio" name="q8" value="correct" /> 收據背面規定</label><br />
+    <label><input type="radio" name="q8" value="wrong" /> 學友提出理由即可</label><br />
+  </li>
+  <li>
+    團報班長需要幾人以上才可享 7 折？
+    <br />
+    <label><input type="radio" name="q9" value="wrong" /> 5人</label><br />
+    <label><input type="radio" name="q9" value="correct" /> 10人</label><br />
+    <label><input type="radio" name="q9" value="wrong" /> 無限制</label><br />
+  </li>
+   <li>
+    哪一種類型的課程不需要白板筆？
+    <br />
+    <label><input type="radio" name="q10" value="wrong" /> 語文</label><br />
+    <label><input type="radio" name="q10" value="correct" /> 運動</label><br />
+    <label><input type="radio" name="q10" value="wrong" /> 文創</label><br />
+  </li>
+      </ol>
+      <button type="button" onclick="checkQuiz()">提交答案</button>
+    </form>
+    <p id="quizResult"></p>
+  </div>
+<footer>演藝前工讀生茂榛製作</footer>
+  <script>
+    function checkQuiz() {
+      const form = document.getElementById("quizForm");
+      const results = [];
+      for (let i = 1; i <= 9; i++) {
+        const q = form["q" + i];
+        let selected = false;
+        for (const option of q) {
+          if (option.checked) {
+            selected = true;
+            results.push(option.value === "correct");
+            break;
+          }
+        }
+        if (!selected) {
+          alert("請回答第 " + i + " 題");
+          return;
+        }
+      }
+      const score = results.filter((r) => r).length;
+      const total = results.length;
+      const p = document.getElementById("quizResult");
+      p.textContent = `你答對了 ${score} 題，共 ${total} 題。`;
+    }
+    function closeOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+  </script>
+</body>
+
+</html>
